@@ -17,7 +17,7 @@ router.post('/register',  userAndPass, checkUserFree, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post('/login', userAndPass, validate, (req, res) => {
+router.post('/login', userAndPass, validate, (req, res, next) => {
   const { password } = req.body;
   const login = bcrypt.compareSync(password.trim(), req.user.password);
   if (login) {
